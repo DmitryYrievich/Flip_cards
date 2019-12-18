@@ -3,12 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="keywords" content="cards">
-	<link rel="stylesheet" href="styles/style.css">
 	<link rel="stylesheet" href="styles/Normalize.css">
+	<link rel="stylesheet" href="styles/style.css">
 	<title>Memory</title>
 </head>
 <body>
-	<div class="board">
+	<audio id="music" autoplay loop>
+		<source src="audio/Ramin Djawadi - I Dreamt I Was Old 2.mp3" type="audio/mp3">Ваш браузер не пожжерживает тег audio!<code>audio</code>
+	</audio>	
+	<div class="container">
+		<div class="sound"><img id="sundIco" src="images/on.png" alt="sound" onclick="mute()"></div>
+		<div class="board">
 			<div class="card" data-id="bran">
 				<img class="front-face" src="Images/bran.jpg" alt="bran">
 				<img class="back-face" src="images/reverce.jpg" alt="back">
@@ -105,71 +110,8 @@
 				<img class="front-face" src="Images/lovers.jpg" alt="lovers">
 				<img class="back-face" src="images/reverce.jpg" alt="back">
 			</div>
-			<div class="card" data-id="moon">
-				<img class="front-face" src="Images/moon.jpg" alt="moon">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="moon">
-				<img class="front-face" src="Images/moon.jpg" alt="moon">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="priest">
-				<img class="front-face" src="Images/priest.jpg" alt="priest">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="priest">
-				<img class="front-face" src="Images/priest.jpg" alt="priest">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="smelly">
-				<img class="front-face" src="Images/smelly.jpg" alt="smelly">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="smelly">
-				<img class="front-face" src="Images/smelly.jpg" alt="smelly">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="strenght">
-				<img class="front-face" src="Images/strenght.jpg" alt="strenght">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="strenght">
-				<img class="front-face" src="Images/strenght.jpg" alt="strenght">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="sun">
-				<img class="front-face" src="Images/sun.jpg" alt="sun">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="sun">
-				<img class="front-face" src="Images/sun.jpg" alt="sun">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="temperance">
-				<img class="front-face" src="Images/temperance.jpg" alt="temperance">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="temperance">
-				<img class="front-face" src="Images/temperance.jpg" alt="temperance">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="wheel">
-				<img class="front-face" src="Images/wheel.jpg" alt="wheel">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="wheel">
-				<img class="front-face" src="Images/wheel.jpg" alt="wheel">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="world">
-				<img class="front-face" src="Images/world.jpg" alt="world">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>
-			<div class="card" data-id="world">
-				<img class="front-face" src="Images/world.jpg" alt="world">
-				<img class="back-face" src="images/reverce.jpg" alt="back">
-			</div>		
-		</div>	
+		</div>
+		<div class="start"><button class="start__button" id="start">Start Game</button></div>	
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript" src="script/js.js"></script>	

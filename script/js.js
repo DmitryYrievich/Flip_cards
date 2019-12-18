@@ -1,52 +1,71 @@
 const cards = document.querySelectorAll('.card');
 
+const start = document.getElementById('start');
+
+const music = document.getElementById('music');
+
 let FlippedCard = false;
 let firstCard, secondCard;
+let lockBoard = false;
+
+function startGame() {
+  music.play();
+  cards.forEach(card => {
+    const ramdomPos = randomInterval(1, cards.length);
+    card.style.order = ramdomPos;
+    card.classList.add('flip');
+    setTimeout(() => {
+      card.classList.remove('flip');
+    }, 3000);
+  });
+}
+
+function randomInterval(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}    
 
 function flipCard() {
+  if (lockBoard) return;
+  if (this === firstCard) return;
   this.classList.add('flip');
 
   if (!FlippedCard) {
     FlippedCard = true;
-    firsCard = this;
+    firstCard = this;
   } else {
     FlippedCard = false;
     secondCard = this;
-    
-    if (firsCard.dataset.id === secondCard.dataset.id) {
-      firstCard.removeEventListener('click', flipCard);
-      secondCard.removeEventListener('click', flipCard);
-    } else {
-      setTimeout(() => {
-        firstCard.classList.remove('flip');
-        secondCard.classList.remove('flip');
-      }, 1500);
-    }
-
-    
+    checkCards();  
   }
 }
 
-// Array.prototype.shuffle2 = function () {
-//     this.forEach(
-//         function (v, i, a) {
-//             let j = Math.floor(Math.random() * (i + 1));
-//             [a[i], a[j]] = [a[j], a[i]];
-//         }
-//     );
-//     return this;
-// }
+function checkCards() {
+  if (firstCard.dataset.id === secondCard.dataset.id) {
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+  } else {
+    lockBoard = true;
+    setTimeout(() => {
+      firstCard.classList.remove('flip');
+      secondCard.classList.remove('flip');
+      lockBoard = false;
+    }, 1500);
+  } 
+}
+
+const sound = document.getElementById('music');
+
+const imgOnOff = document.getElementById('sundIco');
+
+function mute() { 
+  if (sound.muted) {    
+    sound.muted = false;    
+    imgOnOff.src = 'images/on.png';  
+  } else {    
+    sound.muted = true;   
+    imgOnOff.src = 'images/off.png'; 
+  }}
 
 cards.forEach(card => card.addEventListener('click', flipCard));
+start.addEventListener('click', startGame);
 
-// function shuffleArray(array) {
-//     for (let i = array.length - 1; i > 0; i--) {
-//         const j = Math.floor(Math.random() * (i + 1));
-//         [array[i], array[j]] = [array[j], array[i]];
-//     }
-// }
-// function arrayShuffle(o) {
-//     for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-//     return o;
-// }
-  
